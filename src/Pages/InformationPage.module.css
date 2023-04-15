@@ -1,0 +1,11 @@
+/* InformationPage.module.css */
+
+.lg-max-w-custom {
+    max-width: 100%;
+}
+
+@media (min-width: 1024px) {
+    .lg-max-w-custom {
+        max-width: 1145px;
+    }
+}
