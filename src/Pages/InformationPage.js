@@ -57,27 +57,70 @@ export default function InformationPage() {
             <img
               src={image}
               alt="architecture photo"
-              className="rounded-lg shadow-lg"
+              className="rounded-lg shadow-lg h-auto min-w-full md:min-w-[800px]"
             />
           </div>
 
           <p>
             The project will create a simple web app using React, with a PHP
             backend and a MySQL server for storing data. I will use a CSV file
-            from Kaggle with data about Steam video games. My main goal is to
-            show helpful information using charts. If there is time, I will also
-            add a recommendation feature using a Python-based machine-learning
-            model to suggest games that users might like. The web application
-            will be deployed using Vercel, while the PHP backend will be hosted
-            in the public HTML folder of the Artemis server. The MySQL server
-            will be deployed on Azure Cloud Services; there will also be indexes
-            that will be added to the tables in the MySQL server, and the AI
-            model will also be deployed via Vercel. And lastly, a copy of the
-            code will be available on GitHub.
+            from{" "}
+            <a
+              href="https://www.kaggle.com/datasets/antonkozyriev/game-recommendations-on-steam?select=games.csv"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-purple-600 semi-bold"
+            >
+              Kaggle
+            </a>{" "}
+            with data about Steam video games. My main goal is to show helpful
+            information using charts. If there is time, I will also add a
+            recommendation feature using a Python-based machine-learning model
+            to suggest games that users might like. The web application will be
+            deployed using{" "}
+            <a
+              href="https://vercel.com/login?next=%2Fdashboard"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-purple-600 semi-bold"
+            >
+              Vercel
+            </a>
+            , while the PHP backend will be hosted in the public HTML folder of
+            the Artemis server. The MySQL server will be deployed on{" "}
+            <a
+              href="https://azure.microsoft.com/en-us"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-purple-600 semi-bold"
+            >
+              Azure Cloud Services
+            </a>
+            ; there will also be indexes that will be added to the tables in the
+            MySQL server, and the AI model will also be deployed via{" "}
+            <a
+              href="https://vercel.com/login?next=%2Fdashboard"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-purple-600 semi-bold"
+            >
+              Vercel
+            </a>
+            . And lastly, a copy of the code will be available on GitHub.
           </p>
         </div>
         <div className="my-4">
-          <h1 className="text-3xl">Dataset</h1>
+          <h1 className="text-3xl">
+            Dataset{" "}
+            <a
+              href="https://www.kaggle.com/datasets/antonkozyriev/game-recommendations-on-steam?select=games.csv"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-purple-600 semi-bold"
+            >
+              (Kaggle)
+            </a>
+          </h1>
           <ul className="list-disc list-inside">
             {csvFiles.map((file, index) => (
               <li key={index}>
