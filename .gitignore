@@ -3,6 +3,8 @@
 # dependencies
 /frontend/node_modules
 /frontend/.pnp
+/backend/import_csv_to_database_scripts/config.php
+
 .pnp.js
 
 # testing
