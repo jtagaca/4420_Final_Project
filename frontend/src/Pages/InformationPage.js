@@ -31,7 +31,7 @@ export default function InformationPage() {
     <div className="flex items-center justify-center min-h-screen text-white bg-primary">
       <div className=" text-black shadow-2xl shadow-green-200 w-full p-5 m-2 my-5 bg-gradient-to-r from-yellow-200 via-green-200 to-green-500   rounded-lg opacity-90 lg:max-w-[1145px]">
         <div className="my-4">
-          <h1 className="text-3xl">Goal</h1>
+          <h1 className="text-3xl my-3">Goal</h1>
           <p>
             In my project, I aim to perform data mining on a dataset related to
             Steam video games to uncover insightful information, visualized
@@ -52,12 +52,12 @@ export default function InformationPage() {
           </p>
         </div>
         <div className="my-4">
-          <h1 className="text-3xl">Architecture</h1>
-          <div className="flex items-center justify-center p-3">
+          <h1 className="text-3xl my-3">Architecture</h1>
+          <div className="flex flex-col items-center justify-center p-3">
             <img
               src={image}
-              alt="architecture photo"
-              className="rounded-lg shadow-lg h-auto min-w-full md:min-w-[800px]"
+              alt="architecture"
+              className="rounded-lg shadow-lg h-auto w-full md:max-w-[800px]"
             />
           </div>
 
@@ -110,7 +110,7 @@ export default function InformationPage() {
           </p>
         </div>
         <div className="my-4">
-          <h1 className="text-3xl">
+          <h1 className="text-3xl my-3">
             Dataset{" "}
             <a
               href="https://www.kaggle.com/datasets/antonkozyriev/game-recommendations-on-steam?select=games.csv"
@@ -131,7 +131,7 @@ export default function InformationPage() {
           </ul>
         </div>
         <div className="my-4">
-          <h1 className="text-3xl">
+          <h1 className="text-3xl my-3">
             Data mining, here are the questions that I hope to answer in my
             project
           </h1>
@@ -142,7 +142,7 @@ export default function InformationPage() {
           </ol>
         </div>
         <div className="my-4">
-          <h1 className="text-3xl">Extra feature AI</h1>
+          <h1 className="text-3xl my-3">Extra feature AI</h1>
           <p>
             Show the top 10 games that would be recommended to a user based on
             their chosen genre, pricing, and ratings.
