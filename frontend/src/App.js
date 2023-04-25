@@ -1,15 +1,31 @@
-import { BrowserRouter, Routes, Route, Outlet, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import InformationPage from "./Pages/InformationPage";
+import CheckInPage1 from "./Pages/CheckInPage1";
 import NoMatch from "./Pages/NoMatch";
+import Layout from "./Pages/Layout";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<InformationPage />}>
-          <Route path="*" element={<NoMatch />} />
-        </Route>
+        <Route
+          path="/"
+          element={
+            <Layout>
+              <InformationPage />
+            </Layout>
+          }
+        />
+        <Route
+          path="/checkin1"
+          element={
+            <Layout>
+              <CheckInPage1 />
+            </Layout>
+          }
+        />
+        <Route path="*" element={<NoMatch />} />
       </Routes>
     </BrowserRouter>
   );
