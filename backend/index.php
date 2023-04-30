@@ -1,5 +1,5 @@
 <?php
-require_once('config.php');
+require_once('4420/config.php');
 
 if (isset($_POST['initiate']) && $_POST['initiate'] == 'true') {
     $connection = get_connection();

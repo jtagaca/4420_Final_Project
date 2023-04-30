@@ -4,6 +4,7 @@ import InformationPage from "./Pages/InformationPage";
 import CheckInPage1 from "./Pages/CheckInPage1";
 import NoMatch from "./Pages/NoMatch";
 import Layout from "./Pages/Layout";
+import HomePage from "./Pages/HomePage";
 
 function App() {
   return (
@@ -22,6 +23,14 @@ function App() {
           element={
             <Layout>
               <CheckInPage1 />
+            </Layout>
+          }
+        />
+        <Route
+          path="/analytics"
+          element={
+            <Layout>
+              <HomePage />
             </Layout>
           }
         />
