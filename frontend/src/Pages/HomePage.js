@@ -80,119 +80,154 @@ export default function HomePage() {
     ? data.top_10_most_helpful_reviews.map((review, index) => ({
         rank: index + 1,
         review_id: review.review_id,
-        app_id: review.app_id,
+        game_title: review.game_title,
         helpful: parseInt(review.helpful),
       }))
     : [];
 
   return (
     <div className="flex items-center justify-center min-h-screen text-white bg-primary">
-      <div className="text-black shadow-2xl shadow-green-200 w-full p-5 m-2 my-5 bg-gradient-to-r from-yellow-200 via-green-200 to-green-500 rounded-lg opacity-90 lg:max-w-[1145px]">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 h-full w-full md:min-h-[450px] my-5">
-          <div className="flex justify-center items-center w-full h-full relative">
+      <div className="text-black w-full p-5 m-2 my-5 lg:max-w-[1145px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 h-full w-full md:min-h-[450px] mb-5">
+          <div className="relative flex items-center justify-center w-full h-full p-3 my-3 text-white rounded-lg shadow-xl opacity-75 border-gray bg-primary-600">
             {positive_feedback_ratio_bar_chart_data.labels.length === 0 ? (
-              <div className="flex justify-center items-center absolute inset-0">
+              <div className="flex justify-center items-center h-[150px] relative">
                 <RotateCircleLoading />
               </div>
             ) : (
-              <Bar
-                data={positive_feedback_ratio_bar_chart_data}
-                options={{
-                  plugins: {
-                    title: {
-                      display: true,
-                      text: "Top 10 Games by Positive Feedback Ratio",
-                    },
-                  },
-                  maintainAspectRatio: false,
-                  scales: {
-                    x: {
-                      display: true,
-                      title: {
+              <div className="flex-col justify-center items-center w-full h-[400px] lg:h-[600px] pb-6 md:pb-4">
+                <h3 className="mb-4 text-center">
+                  Top 10 Games By Positive Feedback Ratio
+                </h3>
+                <Bar
+                  data={positive_feedback_ratio_bar_chart_data}
+                  options={{
+                    maintainAspectRatio: false,
+
+                    scales: {
+                      x: {
                         display: true,
-                        text: "Game Title",
+                        title: {
+                          display: true,
+                          text: "Game Title",
+                          color: "white",
+                          padding: { bottom: 10 }, // Center the title
+                        },
+                        ticks: {
+                          color: "white",
+                          maxRotation: 45, // Rotate labels to 45 degrees
+                          minRotation: 45, // Rotate labels to 45 degrees
+                        },
+                      },
+                      y: {
+                        ticks: {
+                          beginAtZero: true,
+                          color: "white",
+                        },
+                        title: {
+                          display: true,
+                          text: "Positive Feedback Ratio",
+                          color: "white",
+                        },
                       },
                     },
-                    y: {
-                      ticks: {
-                        beginAtZero: true,
-                      },
-                      title: {
-                        display: true,
-                        text: "Positive Feedback Ratio",
+                    legend: {
+                      display: true,
+                      labels: {
+                        color: "white", // Set the legend text color to white
                       },
                     },
-                  },
-                  legend: {
-                    display: false,
-                  },
-                }}
-              />
+                  }}
+                />
+              </div>
             )}
           </div>
 
-          <div className="flex justify-center items-center w-full h-full relative">
+          <div className="relative flex items-center justify-center w-full h-full p-3 my-3 text-white rounded-lg shadow-xl opacity-75 border-gray bg-primary-600">
             {horizontalBarData.labels.length === 0 ? (
-              <div className="flex justify-center items-center absolute inset-0">
+              <div className="flex justify-center items-center h-[150px] relative">
                 <RotateCircleLoading />
               </div>
             ) : (
-              <Bar
-                data={horizontalBarData}
-                options={{
-                  indexAxis: "y",
-                  plugins: {
-                    title: {
-                      display: true,
-                      text: "Top 10 Users by Products Owned",
-                    },
-                  },
-                  maintainAspectRatio: false,
-                  scales: {
-                    x: {
-                      ticks: {
-                        beginAtZero: true,
+              <div className="flex-col justify-center items-center w-full h-[400px] lg:h-[600px] pb-6 md:pb-4">
+                <h3 className="mb-4 text-center">
+                  Top Users By Number of Games Owned
+                </h3>
+                <Bar
+                  data={horizontalBarData}
+                  options={{
+                    indexAxis: "y",
+
+                    maintainAspectRatio: false,
+                    responsive: true,
+                    scales: {
+                      x: {
+                        ticks: {
+                          beginAtZero: true,
+                          color: "white", // Set the x-axis ticks color
+                        },
+                        title: {
+                          display: true,
+                          text: "Number of Games Owned",
+                          color: "white", // Set the x-axis title color
+                          padding: { bottom: 10 }, // Center the title
+                        },
                       },
-                      title: {
+                      y: {
                         display: true,
-                        text: "Number of Games Owned",
+                        title: {
+                          display: true,
+                          text: "User ID",
+                          color: "white", // Set the y-axis title color
+                        },
+                        ticks: {
+                          color: "white", // Set the y-axis ticks color
+                        },
                       },
                     },
-                    y: {
-                      display: true,
-                      title: {
-                        display: true,
-                        text: "User ID",
-                      },
+                    legend: {
+                      display: false,
                     },
-                  },
-                  legend: {
-                    display: false,
-                  },
-                }}
-              />
+                  }}
+                />
+              </div>
             )}
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 h-full w-full md:min-h-[450px] my-5 ">
-          <div className="flex justify-center items-center w-full h-full relative">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 h-full w-full md:min-h-[450px] my-5">
+          <div className="relative flex items-center justify-center w-full h-full p-3 my-3 text-white rounded-lg shadow-xl opacity-75 border-gray bg-primary-600">
             {rows.length === 0 ? (
-              <div className="flex justify-center items-center absolute inset-0">
+              <div className="flex justify-center items-center h-[150px] relative">
                 <RotateCircleLoading />
               </div>
             ) : (
-              <div className="w-full h-full">
-                <h3 className="text-center mb-4">
+              <div className="flex-col items-center justify-center w-full h-full">
+                <h3 className="mb-4 text-center">
                   Top 10 Most Helpful Reviews
                 </h3>
-                <TableContainer component={Paper}>
+                <TableContainer
+                  component={Paper}
+                  sx={{
+                    backgroundColor: "transparent",
+                    color: "white", // Set the
+                  }}
+                >
                   <Table sx={{ minWidth: "100%" }} aria-label="simple table">
                     <TableHead>
-                      <TableRow>
+                      <TableRow
+                        sx={{
+                          "& th": {
+                            color: "white",
+                            backgroundColor: "#2196F3",
+                          },
+                        }}
+                      >
                         <TableCell>Rank</TableCell>
                         <TableCell>Review ID</TableCell>
-                        <TableCell align="right">App ID</TableCell>
-                        <TableCell align="right">Helpful Count</TableCell>
+                        <TableCell align="right">Game Title</TableCell>
+                        <TableCell align="right">
+                          Number of People who found it helpful
+                        </TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
@@ -203,14 +238,26 @@ export default function HomePage() {
                             "&:last-child td, &:last-child th": { border: 0 },
                           }}
                         >
-                          <TableCell component="th" scope="row">
+                          <TableCell
+                            component="th"
+                            scope="row"
+                            style={{ color: "white" }}
+                          >
                             {row.rank}
                           </TableCell>
-                          <TableCell component="th" scope="row">
+                          <TableCell
+                            component="th"
+                            scope="row"
+                            style={{ color: "white" }}
+                          >
                             {row.review_id}
                           </TableCell>
-                          <TableCell align="right">{row.app_id}</TableCell>
-                          <TableCell align="right">{row.helpful}</TableCell>
+                          <TableCell align="right" style={{ color: "white" }}>
+                            {row.game_title}
+                          </TableCell>
+                          <TableCell align="right" style={{ color: "white" }}>
+                            {row.helpful}
+                          </TableCell>
                         </TableRow>
                       ))}
                     </TableBody>
@@ -220,46 +267,52 @@ export default function HomePage() {
             )}
           </div>
 
-          <div className="flex justify-center items-center w-full h-full relative">
+          <div className="relative flex items-center justify-center w-full h-full p-3 my-3 text-white rounded-lg shadow-xl opacity-75 border-gray bg-primary-600">
             {horizontalBarData.labels.length === 0 ? (
-              <div className="flex justify-center items-center absolute inset-0">
+              <div className="flex justify-center items-center h-[150px] relative">
                 <RotateCircleLoading />
               </div>
             ) : (
-              <Bar
-                data={horizontalBarData}
-                options={{
-                  indexAxis: "y",
-                  plugins: {
-                    title: {
-                      display: true,
-                      text: "Top 10 Users by Products Owned",
-                    },
-                  },
-                  maintainAspectRatio: false,
-                  scales: {
-                    x: {
-                      ticks: {
-                        beginAtZero: true,
-                      },
+              <div className="flex-col justify-center items-center w-full h-[400px] lg:h-[600px] pb-6 md:pb-4">
+                <h3 className="mb-4 text-center">
+                  Top 10 Games By Positive Feedback Ratio
+                </h3>
+                <Bar
+                  data={horizontalBarData}
+                  options={{
+                    indexAxis: "y",
+                    plugins: {
                       title: {
                         display: true,
-                        text: "Number of Games Owned",
+                        text: "Top 10 Users by Products Owned",
                       },
                     },
-                    y: {
-                      display: true,
-                      title: {
+                    maintainAspectRatio: false,
+                    responsive: true,
+                    scales: {
+                      x: {
+                        ticks: {
+                          beginAtZero: true,
+                        },
+                        title: {
+                          display: true,
+                          text: "Number of Games Owned",
+                        },
+                      },
+                      y: {
                         display: true,
-                        text: "User ID",
+                        title: {
+                          display: true,
+                          text: "User ID",
+                        },
                       },
                     },
-                  },
-                  legend: {
-                    display: false,
-                  },
-                }}
-              />
+                    legend: {
+                      display: false,
+                    },
+                  }}
+                />
+              </div>
             )}
           </div>
         </div>
