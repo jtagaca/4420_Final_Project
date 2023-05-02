@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import InformationPage from "./Pages/InformationPage";
 import CheckInPage1 from "./Pages/CheckInPage1";
+import CheckInPage2 from "./Pages/CheckInPage2";
+
 import NoMatch from "./Pages/NoMatch";
 import Layout from "./Pages/Layout";
 import HomePage from "./Pages/HomePage";
@@ -31,6 +33,14 @@ function App() {
           element={
             <Layout>
               <HomePage />
+            </Layout>
+          }
+        />
+        <Route
+          path="/checkin2"
+          element={
+            <Layout>
+              <CheckInPage2 />
             </Layout>
           }
         />

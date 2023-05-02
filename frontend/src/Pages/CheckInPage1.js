@@ -9,7 +9,7 @@ export default function CheckInPage1() {
     <div className="flex items-center justify-center min-h-screen text-white bg-primary">
       <div className=" text-black shadow-2xl shadow-green-200 w-full p-5 m-2 my-5 bg-gradient-to-r from-yellow-200 via-green-200 to-green-500   rounded-lg opacity-90 lg:max-w-[1145px]">
         <div className="my-4">
-          <h1 className="text-3xl my-3">What I have accomplished so far</h1>
+          <h1 className="my-3 text-3xl">What I have accomplished so far</h1>
           <p>
             As of April 24th, 2023 (Monday), I have successfully deployed a
             MySQL database in Azure. Additionally, I have created the necessary
@@ -17,7 +17,7 @@ export default function CheckInPage1() {
             take a look at the dump files or any other file associated with this
             project, please look at{" "}
             <a
-              href="https://vercel.com/login?next=%2Fdashboard"
+              href="https://github.com/jtagaca/4420_Final_Project"
               target="_blank"
               rel="noopener noreferrer"
               className="text-purple-600 semi-bold"
@@ -27,7 +27,7 @@ export default function CheckInPage1() {
             .
           </p>
           <div className="flex flex-col items-center justify-center p-3">
-            <h1 className="text-lg my-4">Tables</h1>
+            <h1 className="my-4 text-lg">Tables</h1>
             <img
               src={table_image}
               alt="table image "
@@ -52,7 +52,7 @@ export default function CheckInPage1() {
             recommendations tables with 2 million rows each.
           </a>
           <div className="flex flex-col items-center justify-center p-3">
-            <h1 className="text-lg my-4">Data count mysql</h1>
+            <h1 className="my-4 text-lg">Data count mysql</h1>
             <img
               src={mysqldata_count_image}
               alt="shell script image 1"
@@ -60,7 +60,7 @@ export default function CheckInPage1() {
             />
           </div>
           <div className="flex flex-col items-center justify-center p-3">
-            <h1 className="text-lg my-4">Shellscripts</h1>
+            <h1 className="my-4 text-lg">Shellscripts</h1>
 
             <img
               src={shellscript1_image}
@@ -78,7 +78,7 @@ export default function CheckInPage1() {
           </div>
         </div>
         <div className="my-4">
-          <h1 className="text-3xl my-3">
+          <h1 className="my-3 text-3xl">
             What you're planning to have completed by the Week 14 check-in.
           </h1>
 
