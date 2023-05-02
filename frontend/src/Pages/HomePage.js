@@ -145,7 +145,7 @@ export default function HomePage() {
 
           <div className="relative flex items-center justify-center w-full h-full p-3 my-3 text-white rounded-lg shadow-xl opacity-75 border-gray bg-primary-600">
             {horizontalBarData.labels.length === 0 ? (
-              <div className="flex justify-center items-center h-[150px] relative mr-5 bg-red-500">
+              <div className="flex justify-center items-center h-[150px] relative mr-5 ">
                 <RotateCircleLoading />
               </div>
             ) : (
