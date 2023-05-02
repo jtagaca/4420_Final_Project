@@ -91,7 +91,7 @@ export default function HomePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 h-full w-full md:min-h-[450px] mb-5">
           <div className="relative flex items-center justify-center w-full h-full p-3 my-3 text-white rounded-lg shadow-xl opacity-75 border-gray bg-primary-600">
             {positive_feedback_ratio_bar_chart_data.labels.length === 0 ? (
-              <div className="flex justify-center items-center h-[150px] relative">
+              <div className="flex justify-center items-center h-[150px] relative mr-5">
                 <RotateCircleLoading />
               </div>
             ) : (
@@ -145,7 +145,7 @@ export default function HomePage() {
 
           <div className="relative flex items-center justify-center w-full h-full p-3 my-3 text-white rounded-lg shadow-xl opacity-75 border-gray bg-primary-600">
             {horizontalBarData.labels.length === 0 ? (
-              <div className="flex justify-center items-center h-[150px] relative">
+              <div className="flex justify-center items-center h-[150px] relative mr-5 bg-red-500">
                 <RotateCircleLoading />
               </div>
             ) : (
@@ -197,7 +197,7 @@ export default function HomePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 h-full w-full md:min-h-[450px] my-5">
           <div className="relative flex items-center justify-center w-full h-full p-3 my-3 text-white rounded-lg shadow-xl opacity-75 border-gray bg-primary-600">
             {rows.length === 0 ? (
-              <div className="flex justify-center items-center h-[150px] relative">
+              <div className="flex justify-center items-center h-[150px] mr-5 relative">
                 <RotateCircleLoading />
               </div>
             ) : (
@@ -269,7 +269,7 @@ export default function HomePage() {
 
           <div className="relative flex items-center justify-center w-full h-full p-3 my-3 text-white rounded-lg shadow-xl opacity-75 border-gray bg-primary-600">
             {horizontalBarData.labels.length === 0 ? (
-              <div className="flex justify-center items-center h-[150px] relative">
+              <div className="flex justify-center items-center h-[150px] mr-5 relative">
                 <RotateCircleLoading />
               </div>
             ) : (
