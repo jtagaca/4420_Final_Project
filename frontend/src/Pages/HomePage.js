@@ -21,7 +21,7 @@ export default function HomePage() {
   }, []);
 
   useEffect(() => {
-    debugger;
+    // debugger;
     console.log("data", data);
   }, [data]);
 
