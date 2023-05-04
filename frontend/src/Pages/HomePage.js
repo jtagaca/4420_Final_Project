@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getAllGamesData } from "../Library/requests/getAllGamesData";
 import { Bar } from "react-chartjs-2";
+import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -21,7 +22,7 @@ export default function HomePage() {
   }, []);
 
   useEffect(() => {
-    // debugger;
+    debugger;
     console.log("data", data);
   }, [data]);
 
@@ -47,6 +48,23 @@ export default function HomePage() {
     datasets: [
       {
         label: "Products Owned",
+        data: [],
+        backgroundColor: [
+          "#4CAF50",
+          "#F44336",
+          "#2196F3",
+          "#FF9800",
+          "#9C27B0",
+        ],
+      },
+    ],
+  };
+
+  const most_played_games_data = {
+    labels: [],
+    datasets: [
+      {
+        label: "Number of Hours Played",
         data: [],
         backgroundColor: [
           "#4CAF50",
@@ -84,10 +102,47 @@ export default function HomePage() {
         helpful: parseInt(review.helpful),
       }))
     : [];
+  if (data.top_10_games_by_hours_played) {
+    data.top_10_games_by_hours_played.forEach((game) => {
+      most_played_games_data.labels.push(game.title);
+      most_played_games_data.datasets[0].data.push(
+        parseFloat(game.total_hours_played)
+      );
+    });
+  }
+  const most_reviewed_games_data = {
+    labels: [],
+    datasets: [
+      {
+        label: "Number of Reviews",
+        data: [],
+        backgroundColor: [
+          "#4CAF50",
+          "#F44336",
+          "#2196F3",
+          "#FF9800",
+          "#9C27B0",
+          "#FF6384",
+          "#36A2EB",
+          "#FFCE56",
+          "#4BC0C0",
+          "#9966FF",
+        ],
+      },
+    ],
+  };
 
+  if (data.top_10_games_by_user_reviews) {
+    data.top_10_games_by_user_reviews.forEach((game) => {
+      most_reviewed_games_data.labels.push(game.title);
+      most_reviewed_games_data.datasets[0].data.push(
+        parseFloat(game.user_reviews)
+      );
+    });
+  }
   return (
     <div className="flex items-center justify-center min-h-screen text-white bg-primary">
-      <div className="text-black w-full p-5 m-2 my-5 lg:max-w-[1145px]">
+      <div className="justify-center items-center text-black w-full p-5 m-2 my-5 lg:max-w-[1145px]">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 h-full w-full md:min-h-[450px] mb-5">
           <div className="relative flex items-center justify-center w-full h-full p-3 my-3 text-white rounded-lg shadow-xl opacity-75 border-gray bg-primary-600">
             {positive_feedback_ratio_bar_chart_data.labels.length === 0 ? (
@@ -131,10 +186,32 @@ export default function HomePage() {
                         },
                       },
                     },
-                    legend: {
-                      display: true,
-                      labels: {
-                        color: "white", // Set the legend text color to white
+                    plugins: {
+                      tooltip: {
+                        backgroundColor: "rgba(0, 0, 0, 0.7)", // Set the tooltip background color
+                        titleColor: "white",
+                        bodyColor: "white",
+                        borderColor: "rgba(255, 255, 255, 0.5)",
+                        borderWidth: 1,
+                        borderRadius: 6,
+                        titleFont: {
+                          size: 16,
+                          weight: "bold",
+                        },
+                        bodyFont: {
+                          size: 14,
+                        },
+                        padding: 10,
+                      },
+                      legend: {
+                        display: true,
+                        labels: {
+                          color: "white", // Set the legend text color to white
+                          font: {
+                            size: 14,
+                          },
+                          boxWidth: 20,
+                        },
                       },
                     },
                   }}
@@ -151,7 +228,7 @@ export default function HomePage() {
             ) : (
               <div className="flex-col justify-center items-center w-full h-[400px] lg:h-[600px] pb-6 md:pb-4">
                 <h3 className="mb-4 text-center">
-                  Top Users By Number of Games Owned
+                  Top 10 Users By Number of Games Owned
                 </h3>
                 <Bar
                   data={horizontalBarData}
@@ -185,8 +262,33 @@ export default function HomePage() {
                         },
                       },
                     },
-                    legend: {
-                      display: false,
+                    plugins: {
+                      tooltip: {
+                        backgroundColor: "rgba(0, 0, 0, 0.7)", // Set the tooltip background color
+                        titleColor: "white",
+                        bodyColor: "white",
+                        borderColor: "rgba(255, 255, 255, 0.5)",
+                        borderWidth: 1,
+                        borderRadius: 6,
+                        titleFont: {
+                          size: 16,
+                          weight: "bold",
+                        },
+                        bodyFont: {
+                          size: 14,
+                        },
+                        padding: 10,
+                      },
+                      legend: {
+                        display: true,
+                        labels: {
+                          color: "white", // Set the legend text color to white
+                          font: {
+                            size: 14,
+                          },
+                          boxWidth: 20,
+                        },
+                      },
                     },
                   }}
                 />
@@ -266,54 +368,141 @@ export default function HomePage() {
               </div>
             )}
           </div>
-
-          <div className="relative flex items-center justify-center w-full h-full p-3 my-3 text-white rounded-lg shadow-xl opacity-75 border-gray bg-primary-600">
-            {horizontalBarData.labels.length === 0 ? (
-              <div className="flex justify-center items-center h-[150px] mr-5 relative">
+          <div
+            className={`relative flex justify-center w-full h-full p-3 my-3 text-white rounded-lg shadow-xl opacity-75 border-gray bg-primary-600 ${
+              most_played_games_data.labels.length === 0
+                ? "items-center"
+                : "items-start"
+            }`}
+          >
+            {most_played_games_data.labels.length === 0 ? (
+              <div className="flex justify-center items-center h-[150px] relative mr-5">
                 <RotateCircleLoading />
               </div>
             ) : (
               <div className="flex-col justify-center items-center w-full h-[400px] lg:h-[600px] pb-6 md:pb-4">
-                <h3 className="mb-4 text-center">
-                  Top 10 Games By Positive Feedback Ratio
+                <h3 className="mb-4 text-center ">
+                  Top 10 Games By Number of Hours Played
                 </h3>
                 <Bar
-                  data={horizontalBarData}
+                  data={most_played_games_data}
                   options={{
-                    indexAxis: "y",
-                    plugins: {
-                      title: {
-                        display: true,
-                        text: "Top 10 Users by Products Owned",
-                      },
-                    },
                     maintainAspectRatio: false,
-                    responsive: true,
+
                     scales: {
                       x: {
-                        ticks: {
-                          beginAtZero: true,
-                        },
+                        display: true,
                         title: {
                           display: true,
-                          text: "Number of Games Owned",
+                          text: "Game Title",
+                          color: "white",
+                          padding: { bottom: 10 }, // Center the title
+                        },
+                        ticks: {
+                          color: "white",
+                          maxRotation: 45, // Rotate labels to 45 degrees
+                          minRotation: 45, // Rotate labels to 45 degrees
                         },
                       },
                       y: {
-                        display: true,
+                        ticks: {
+                          beginAtZero: true,
+                          color: "white",
+                        },
                         title: {
                           display: true,
-                          text: "User ID",
+                          text: "Number of Hours Played",
+                          color: "white",
                         },
                       },
                     },
-                    legend: {
-                      display: false,
+                    plugins: {
+                      tooltip: {
+                        backgroundColor: "rgba(0, 0, 0, 0.7)", // Set the tooltip background color
+                        titleColor: "white",
+                        bodyColor: "white",
+                        borderColor: "rgba(255, 255, 255, 0.5)",
+                        borderWidth: 1,
+                        borderRadius: 6,
+                        titleFont: {
+                          size: 16,
+                          weight: "bold",
+                        },
+                        bodyFont: {
+                          size: 14,
+                        },
+                        padding: 10,
+                      },
+                      legend: {
+                        display: true,
+                        labels: {
+                          color: "white", // Set the legend text color to white
+                          font: {
+                            size: 14,
+                          },
+                          boxWidth: 20,
+                        },
+                      },
                     },
                   }}
                 />
               </div>
             )}
+          </div>
+        </div>
+        <div className="flex items-center justify-center w-full h-full">
+          <div className="flex items-center justify-center h-full w-full md:min-h-[450px] lg:max-w-[700px] mb-5 ">
+            <div className="relative flex items-center justify-center w-full h-full p-3 my-3 text-white rounded-lg shadow-xl opacity-75 border-gray bg-primary-600">
+              {positive_feedback_ratio_bar_chart_data.labels.length === 0 ? (
+                <div className="flex justify-center items-center h-[150px] md:h-[450px] relative mr-5">
+                  <RotateCircleLoading />
+                </div>
+              ) : (
+                <div className="flex items-center justify-center w-full h-full pb-6 md:pb-4 ">
+                  <div className="text-center">
+                    <h3 className="mb-4">
+                      Top 10 Games By Number of User Reviews
+                    </h3>
+                    <div className="w-full h-[500px] lg:h-[600px] ">
+                      <Pie
+                        data={most_reviewed_games_data}
+                        options={{
+                          maintainAspectRatio: false,
+                          plugins: {
+                            tooltip: {
+                              backgroundColor: "rgba(0, 0, 0, 0.7)", // Set the tooltip background color
+                              titleColor: "white",
+                              bodyColor: "white",
+                              borderColor: "rgba(255, 255, 255, 0.5)",
+                              borderWidth: 1,
+                              borderRadius: 6,
+                              titleFont: {
+                                size: 16,
+                                weight: "bold",
+                              },
+                              bodyFont: {
+                                size: 14,
+                              },
+                              padding: 10,
+                            },
+                            legend: {
+                              display: true,
+                              labels: {
+                                color: "white", // Set the legend text color to white
+                                font: {
+                                  size: 14,
+                                },
+                                boxWidth: 20,
+                              },
+                            },
+                          },
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
