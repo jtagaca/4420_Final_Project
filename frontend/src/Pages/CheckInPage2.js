@@ -1,9 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import table_image from "../Library/images/tables.png";
-import shellscript1_image from "../Library/images/shellscript1.png";
-import shellscript2_image from "../Library/images/shellscript2.png";
-import mysqldata_count_image from "../Library/images/mysqldatacount.png";
 
 export default function CheckInPage2() {
   return (

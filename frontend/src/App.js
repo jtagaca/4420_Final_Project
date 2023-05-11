@@ -7,6 +7,7 @@ import CheckInPage2 from "./Pages/CheckInPage2";
 import NoMatch from "./Pages/NoMatch";
 import Layout from "./Pages/Layout";
 import HomePage from "./Pages/HomePage";
+import FinalReport from "./Pages/FinalReport";
 
 function App() {
   return (
@@ -41,6 +42,14 @@ function App() {
           element={
             <Layout>
               <CheckInPage2 />
+            </Layout>
+          }
+        />
+        <Route
+          path="/finalreport"
+          element={
+            <Layout>
+              <FinalReport />
             </Layout>
           }
         />
