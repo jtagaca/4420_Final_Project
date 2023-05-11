@@ -8,7 +8,6 @@ Games Analytics is an app that enables gamers to understand the gaming landscape
 - NPM version: 9.6.0
 - Dataset : [Game Recommendations on Steam | Kaggle](https://www.kaggle.com/datasets/antonkozyriev/game-recommendations-on-steam?select=games.csv)
 - List of all node packages installed
-
 1. @emotion/react: [https://www.npmjs.com/package/@emotion/react](https://www.npmjs.com/package/@emotion/react)
 2. @emotion/styled: [https://www.npmjs.com/package/@emotion/styled](https://www.npmjs.com/package/@emotion/styled)
 3. @mui/material: [https://www.npmjs.com/package/@mui/material](https://www.npmjs.com/package/@mui/material)
